@@ -410,7 +410,9 @@ footer a { color: var(--teal); }
 </nav>
 
 <!-- ── HERO ── -->
-<section class="hero-section">
+<section class="hero-section" style="background-image:url('https://images.unsplash.com/photo-1520034475321-cbe63696469a?w=1600&q=70&fit=crop');background-size:cover;background-position:center 40%;position:relative;">
+  <div style="position:absolute;inset:0;background:rgba(253,248,240,0.92);"></div>
+  <div style="position:relative;z-index:1;">
   <div class="w hero-grid">
     <div>
       <div class="hero-tag">🌊 Citizen Science · Korea · China · Japan</div>
@@ -451,6 +453,7 @@ footer a { color: var(--teal); }
       </div>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- ── PROBLEM ── -->
@@ -467,12 +470,78 @@ footer a { color: var(--teal); }
       <a href="research.html" class="btn btn-teal btn-sm">See the research →</a>
     </div>
     <div class="problem-grid">
-      <div class="problem-card"><div class="p-icon">🎣</div><h3>Fisheries collapse</h3><p>Dense blooms rip nets, contaminate catch, and eat the same plankton as fish larvae. Fishers in Chungnam, Liaoning, and Fukui report it gets worse every summer.</p><span class="sev sev-high">Severe</span></div>
-      <div class="problem-card"><div class="p-icon">⚡</div><h3>Power plant shutdowns</h3><p>Nuclear and thermal plants pull seawater for cooling. Jellyfish clog the intakes. This has happened in Korea, China, and Japan — not once, repeatedly.</p><span class="sev sev-high">Severe</span></div>
-      <div class="problem-card"><div class="p-icon">🐠</div><h3>Ecosystem tipping points</h3><p>Once jellyfish eat enough fish eggs and larvae, fish populations can't recover. The ecosystem flips into a jellyfish-dominant state — possibly already happening in the Yellow Sea.</p><span class="sev sev-high">Severe</span></div>
-      <div class="problem-card"><div class="p-icon">🏖️</div><h3>Beach and tourism losses</h3><p>Mass strandings and stings close beaches across Korea and Japan every summer. Local businesses lose income. Nobody tracks this systematically across all three countries.</p><span class="sev sev-med">Significant</span></div>
-      <div class="problem-card"><div class="p-icon">♻️</div><h3>But they're useful</h3><p>Dried jellyfish biomass is nitrogen-rich and converts to agricultural fertilizer. Some Korean companies are already doing this. If we map the blooms, we can harvest them before they cause damage.</p><span class="sev sev-good">Opportunity</span></div>
-      <div class="problem-card"><div class="p-icon">🌐</div><h3>Three countries, no shared data</h3><p>Korea, China, and Japan each monitor separately. A bloom starting in Qingdao becomes Korea's problem in two weeks — but nobody gets an early warning.</p><span class="sev sev-high">The core gap</span></div>
+      <div class="problem-card">
+        <div class="p-icon">🎣</div><h3>Fisheries collapse</h3>
+        <p>Dense blooms rip nets, contaminate catch, and eat the same plankton as fish larvae. Fishers in Chungnam, Liaoning, and Fukui report it gets worse every summer.</p>
+        <span class="sev sev-high">Severe</span>
+      </div>
+      <div class="problem-card">
+        <div class="p-icon">⚡</div><h3>Power plant shutdowns</h3>
+        <p>Nuclear and thermal plants pull seawater for cooling. Jellyfish clog the intakes. This has happened in Korea, China, and Japan — not once, repeatedly.</p>
+        <span class="sev sev-high">Severe</span>
+      </div>
+      <div class="problem-card">
+        <div class="p-icon">🐠</div><h3>Ecosystem tipping points</h3>
+        <p>Once jellyfish eat enough fish eggs and larvae, fish populations can't recover. The ecosystem flips into a jellyfish-dominant state — possibly already happening in the Yellow Sea.</p>
+        <span class="sev sev-high">Severe</span>
+      </div>
+      <div class="problem-card">
+        <div class="p-icon">🏖️</div><h3>Beach and tourism losses</h3>
+        <p>Mass strandings and stings close beaches across Korea and Japan every summer. Local businesses lose income. Nobody tracks this systematically across all three countries.</p>
+        <span class="sev sev-med">Significant</span>
+      </div>
+      <div class="problem-card">
+        <div class="p-icon">♻️</div><h3>But they're useful</h3>
+        <p>Dried jellyfish biomass is nitrogen-rich and converts to agricultural fertilizer. Some Korean companies are already doing this. If we map the blooms, we can harvest them before they cause damage.</p>
+        <span class="sev sev-good">Opportunity</span>
+      </div>
+      <div class="problem-card">
+        <div class="p-icon">🌐</div><h3>Three countries, no shared data</h3>
+        <p>Korea, China, and Japan each monitor separately. A bloom starting in Qingdao becomes Korea's problem in two weeks — but nobody gets an early warning.</p>
+        <span class="sev sev-high">The core gap</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── PHOTO MOSAIC ── -->
+<section style="background:var(--ink);padding:0;overflow:hidden;line-height:0;">
+  <div style="display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:220px 220px;gap:3px;">
+    <div style="grid-row:span 2;position:relative;overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1484291470158-b8f8d608850d?w=900&q=80&fit=crop"
+           alt="Jellyfish bloom in dark water" loading="lazy"
+           style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s;"
+           onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:1rem 1.1rem;background:linear-gradient(transparent,rgba(0,0,0,0.75));color:#fff;font-size:12px;font-family:'Space Mono',monospace;letter-spacing:0.04em;line-height:1.4;">Jellyfish bloom · Yellow Sea</div>
+    </div>
+    <div style="position:relative;overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80&fit=crop"
+           alt="Fishing boats" loading="lazy"
+           style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s;"
+           onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:0.65rem 0.9rem;background:linear-gradient(transparent,rgba(0,0,0,0.75));color:#fff;font-size:11px;font-family:'Space Mono',monospace;line-height:1.4;">Fishing livelihoods at risk</div>
+    </div>
+    <div style="position:relative;overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=600&q=80&fit=crop"
+           alt="Jellyfish glow" loading="lazy"
+           style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s;"
+           onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:0.65rem 0.9rem;background:linear-gradient(transparent,rgba(0,0,0,0.75));color:#fff;font-size:11px;font-family:'Space Mono',monospace;line-height:1.4;">Nomura's · up to 200kg each</div>
+    </div>
+    <div style="position:relative;overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80&fit=crop"
+           alt="Coastal power plant" loading="lazy"
+           style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s;"
+           onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:0.65rem 0.9rem;background:linear-gradient(transparent,rgba(0,0,0,0.75));color:#fff;font-size:11px;font-family:'Space Mono',monospace;line-height:1.4;">Power plant intakes blocked</div>
+    </div>
+    <div style="position:relative;overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80&fit=crop"
+           alt="Korean coastline" loading="lazy"
+           style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s;"
+           onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:0.65rem 0.9rem;background:linear-gradient(transparent,rgba(0,0,0,0.75));color:#fff;font-size:11px;font-family:'Space Mono',monospace;line-height:1.4;">Korean west coast</div>
     </div>
   </div>
 </section>
@@ -480,12 +549,22 @@ footer a { color: var(--teal); }
 <!-- ── MAP PREVIEW ── -->
 <section class="map-section">
   <div class="w">
-    <div class="map-section-header">
+    <div style="width:100%;height:120px;border-radius:10px;overflow:hidden;margin-bottom:1.25rem;position:relative;">
+    <img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=1200&q=75&fit=crop" 
+         alt="Jellyfish swarm" loading="lazy"
+         style="width:100%;height:100%;object-fit:cover;object-position:center 60%;">
+    <div style="position:absolute;inset:0;background:rgba(10,158,138,0.3);"></div>
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:0.75rem 1rem;background:linear-gradient(transparent,rgba(0,0,0,0.6));color:#fff;">
+      <span style="font-family:'Space Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:0.08em;opacity:0.8;">Live data · GBIF records · Nomura's jellyfish</span>
+    </div>
+  </div>
+  <div class="map-section-header" style="margin-bottom:1.25rem;">
       <div>
         <div class="label">Live data · GBIF records · Nomura's jellyfish</div>
         <h2 class="section-h" style="margin-bottom:0;">Where blooms are happening right now</h2>
       </div>
       <a href="map.html" class="btn btn-teal btn-sm">Open full map →</a>
+    </div>
     </div>
     <div id="map-loading-wrap" class="map-loading-inner"><div class="spinner"></div><span>Loading bloom data…</span></div>
     <div id="preview-map" style="display:none;"></div>
@@ -501,8 +580,9 @@ footer a { color: var(--teal); }
 </section>
 
 <!-- ── HOW IT WORKS ── -->
-<section class="how-section">
-  <div class="w">
+<section class="how-section" style="background-image:url('https://images.unsplash.com/photo-1565118531796-763e5082d113?w=1600&q=60&fit=crop');background-size:cover;background-position:center;position:relative;">
+  <div style="position:absolute;inset:0;background:rgba(224,245,242,0.94);"></div>
+  <div class="w" style="position:relative;z-index:1;">
     <div class="label">How citizen science works here</div>
     <h2 class="section-h">You don't need to be a marine biologist</h2>
     <p class="section-lead">Professional monitoring covers maybe 5% of the relevant coastline. The rest needs people who actually live there.</p>
@@ -516,6 +596,7 @@ footer a { color: var(--teal); }
       <a href="submit.html" class="btn btn-teal">Report a sighting →</a>
       <a href="map.html" class="btn btn-outline">View the live map</a>
     </div>
+  </div>
   </div>
 </section>
 
