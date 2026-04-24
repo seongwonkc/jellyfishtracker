@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Home · JellyWatch</title>
+<title>Live Bloom Map · JellyWatch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,800;1,400;1,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-
 <style>
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -246,60 +245,45 @@ footer a{color:var(--teal);}
 
 nav a.active{color:var(--teal);border-bottom:2px solid var(--teal);padding-bottom:2px;}
 .nav-cta.active{border-bottom:none !important;}
+.btn-sm{padding:8px 16px;font-size:13px;}
 
-.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--teal-light);color:var(--teal-mid);border:1.5px solid var(--teal);border-radius:20px;padding:4px 14px;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.25rem;}
-h1 .hl{color:var(--teal);border-bottom:3px solid var(--yellow);}
-.hero-intro{font-size:1.05rem;color:var(--ink-soft);line-height:1.8;margin-bottom:0.75rem;}
-.hero-intro strong{color:var(--ink);}
-.hero-personal{background:var(--yellow-light);border:2px solid var(--yellow);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:2rem;font-size:0.9rem;color:var(--ink-soft);line-height:1.7;position:relative;}
-.hero-personal::before{content:'"';position:absolute;top:-14px;left:16px;font-size:3rem;color:var(--yellow-dark);font-family:'Nunito',sans-serif;line-height:1;}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;}
-.notebook{background:var(--paper);border:2px solid var(--ink);border-radius:12px;overflow:hidden;}
-.notebook-header{background:var(--teal);color:#fff;padding:0.75rem 1.25rem;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.04em;display:flex;align-items:center;gap:8px;}
-.notebook-body{padding:1.25rem;}
-.nb-row{display:flex;align-items:baseline;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--border);}
-.nb-row:last-child{border-bottom:none;}
-.nb-label{font-size:13px;color:var(--ink-soft);}
-.nb-val{font-family:'Space Mono',monospace;font-size:1.3rem;font-weight:700;color:var(--ink);}
-.nb-val.teal{color:var(--teal);}
-.nb-val.yellow{color:var(--yellow-dark);}
-.nb-val.red{color:var(--red);}
-.nb-note{margin-top:1rem;padding:0.75rem;background:var(--yellow-light);border-radius:8px;border:1px solid var(--yellow);font-size:12px;color:var(--ink-soft);line-height:1.6;}
-.country-flags{display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap;}
-.cflag{background:var(--cream);border:1.5px solid var(--border-dark);border-radius:8px;padding:5px 12px;font-size:13px;font-weight:600;color:var(--ink);}
-.founder-video-wrap{border-radius:12px;overflow:hidden;border:2px solid var(--ink);margin-bottom:1.25rem;}
-.founder-video-placeholder{background:var(--teal-light);padding:2rem 1.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:200px;gap:1rem;border:2px dashed var(--teal);}
-.video-play-hint{width:52px;height:52px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;padding-left:4px;}
-.video-label strong{display:block;font-size:0.9rem;color:var(--ink);margin-bottom:4px;}
-.video-label span{font-size:11.5px;color:var(--ink-soft);font-family:'Space Mono',monospace;}
-.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem;}
-.problem-card{background:var(--cream);border:2px solid var(--border-dark);border-radius:12px;padding:1.5rem;transition:border-color 0.2s,transform 0.15s;}
-.problem-card:hover{border-color:var(--ink);transform:translateY(-2px);}
-.problem-icon{font-size:1.75rem;margin-bottom:0.75rem;}
-.problem-card p{font-size:0.85rem;color:var(--ink-soft);line-height:1.7;}
-.sev{display:inline-block;margin-top:0.75rem;font-size:10.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:2px 9px;border-radius:4px;}
-.sev-high{background:#fde8e4;color:#b83a20;border:1px solid #f0b8a8;}
-.sev-med{background:#fff5d6;color:#8a6400;border:1px solid #e8d078;}
-.sev-good{background:#e0f5f2;color:var(--teal-mid);border:1px solid var(--teal);}
-.inline-cta{background:var(--teal-light);border:2px solid var(--teal);border-radius:12px;padding:1.5rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin:2.5rem 0 0;}
-.inline-cta-text strong{display:block;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:3px;}
-.inline-cta-text span{font-size:0.875rem;color:var(--ink-soft);}
-.science-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem;}
-.science-card{background:var(--paper);border:2px solid var(--ink);border-radius:12px;padding:1.5rem;}
-.step-num{display:inline-block;background:var(--teal);color:#fff;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;margin-bottom:0.85rem;}
-.science-card p{font-size:0.85rem;color:var(--ink-soft);line-height:1.7;}
-.countries-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem;}
-.country-card{background:var(--paper);border:2px solid var(--ink);border-radius:12px;padding:1.5rem;}
-.country-flag{font-size:2.2rem;margin-bottom:0.65rem;display:block;}
-.country-card p{font-size:0.85rem;color:var(--ink-soft);line-height:1.7;}
-.country-species{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--teal-mid);margin-top:0.85rem;display:block;font-weight:700;}
-.country-card.kr{border-top:4px solid #cd5c5c;}.country-card.cn{border-top:4px solid #ddb43e;}.country-card.jp{border-top:4px solid #b482b4;}
-.photo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
-.photo-slot{border-radius:10px;overflow:hidden;border:2px dashed var(--border-dark);aspect-ratio:4/3;}
-.photo-placeholder{width:100%;height:100%;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;font-size:1.5rem;color:var(--ink-faint);padding:1rem;}
-.photo-placeholder span{font-size:12px;font-weight:600;color:var(--ink-soft);}
-.photo-placeholder .photo-hint{font-size:11px;color:var(--ink-faint);font-style:italic;}
-@media(max-width:900px){.countries-grid{grid-template-columns:1fr;}.photo-strip{grid-template-columns:1fr 1fr;}}
+.map-page-layout{display:grid;grid-template-columns:1fr 310px;gap:1.5rem;align-items:start;max-width:1160px;margin:0 auto;padding:2rem;}
+.map-panel{border:2px solid var(--ink);border-radius:12px;overflow:hidden;background:var(--paper);}
+.map-toolbar{display:flex;gap:8px;flex-wrap:wrap;padding:0.9rem 1rem;background:var(--cream);border-bottom:2px solid var(--ink);}
+.species-btn{background:var(--paper);border:1.5px solid var(--border-dark);color:var(--ink-soft);padding:5px 14px;border-radius:20px;font-size:12.5px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Nunito',sans-serif;}
+.species-btn:hover{border-color:var(--teal);color:var(--teal);}
+.species-btn.active{background:var(--teal);color:#fff;border-color:var(--teal-mid);}
+#map{height:calc(100vh - 220px);min-height:480px;}
+.map-legend{display:flex;gap:1.25rem;padding:0.65rem 1rem;background:var(--cream);border-top:2px solid var(--ink);font-size:11px;color:var(--ink-soft);}
+.legend-item{display:flex;align-items:center;gap:5px;}
+.legend-dot{width:9px;height:9px;border-radius:50%;}
+.dot-high{background:var(--red);}.dot-med{background:var(--green);}.dot-low{background:var(--blue);}
+.loading-map{display:flex;align-items:center;justify-content:center;height:calc(100vh - 220px);min-height:480px;color:var(--ink-faint);font-size:13px;gap:10px;}
+.spinner{width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--teal);border-radius:50%;animation:spin 0.8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.side-panel{display:flex;flex-direction:column;gap:1rem;}
+.side-card{background:var(--paper);border:2px solid var(--ink);border-radius:12px;padding:1.1rem;}
+.side-card h4{font-family:'Space Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-faint);margin-bottom:0.85rem;font-weight:700;}
+.metric-row{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px dashed var(--border);}
+.metric-row:last-child{border-bottom:none;}
+.metric-label{font-size:12px;color:var(--ink-soft);}
+.metric-val{font-family:'Space Mono',monospace;font-size:13px;color:var(--ink);font-weight:700;}
+.bloom-bars{display:flex;flex-direction:column;gap:7px;margin-top:0.25rem;}
+.bar-row{display:flex;align-items:center;gap:8px;}
+.bar-name{font-size:11px;color:var(--ink-soft);width:36px;}
+.bar-track{flex:1;height:7px;background:var(--border);border-radius:4px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:4px;transition:width 0.6s ease;}
+.bar-fill.high{background:var(--red);}.bar-fill.med{background:var(--green);}.bar-fill.low{background:var(--blue);}
+.bar-count{font-size:11px;font-family:'Space Mono',monospace;color:var(--ink-soft);width:26px;text-align:right;}
+.fert-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:0.5rem;}
+.fert-cell{background:var(--teal-light);border-radius:8px;padding:9px 10px;border:1px solid var(--teal);}
+.fert-cell .val{font-family:'Space Mono',monospace;font-size:13px;color:var(--teal-mid);display:block;font-weight:700;}
+.fert-cell .lbl{font-size:10px;color:var(--teal-mid);margin-top:2px;text-transform:uppercase;letter-spacing:0.04em;}
+.soil-impact{margin-top:8px;padding:9px 11px;background:var(--yellow-light);border-radius:8px;border:1px solid var(--yellow);font-size:12px;color:var(--ink-soft);line-height:1.6;}
+.soil-impact strong{color:var(--yellow-dark);}
+.map-cta{background:var(--teal-light);border:2px solid var(--teal);border-radius:10px;padding:1rem;text-align:center;}
+.map-cta p{font-size:13px;color:var(--ink-soft);margin-bottom:0.75rem;line-height:1.5;}
+@media(max-width:900px){.map-page-layout{grid-template-columns:1fr;}}
 
 </style>
 </head>
@@ -307,138 +291,169 @@ h1 .hl{color:var(--teal);border-bottom:3px solid var(--yellow);}
 <nav>
   <a href="index.html" class="nav-logo">🪼 JellyWatch <span class="logo-tag">student project</span></a>
   <ul>
-    <li><a href="index.html" class=" active">Home</a></li>
-    <li><a href="map.html" class="">Live map</a></li>
-    <li><a href="submit.html" class="">Report a sighting</a></li>
-    <li><a href="research.html" class="">Research</a></li>
-    <li><a href="about.html" class="">About</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="map.html" class="active">Live map</a></li>
+    <li><a href="submit.html">Report a sighting</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="kit.html">CoastCare Kit</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="submit.html" class="nav-cta">Join</a></li>
   </ul>
 </nav>
 
-<div style="max-width:1160px;margin:0 auto;padding:4rem 2rem 2rem;display:grid;grid-template-columns:1fr 380px;gap:3rem;align-items:start;">
+<div style="background:var(--paper);border-bottom:2px solid var(--ink);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;">
   <div>
-    <div class="hero-tag">🌊 Citizen Science · Korea · China · Japan</div>
-    <h1>Korea's coasts are getting<br><span class="hl">wrecked by jellyfish.</span><br>I'm trying to do something about it.</h1>
-    <p class="hero-intro">I'm a high school student in Seoul, and I've been <strong>obsessed with jellyfish blooms</strong> for the past two years. Not because they're cool (they are), but because they're quietly destroying fishing livelihoods and coastal ecosystems across three countries — and nobody seems to have a shared plan.</p>
-    <div class="hero-personal">
-      I started tracking blooms after reading about fishers in South Chungnam losing entire hauls to Nomura's jellyfish. Turns out the same species originates in Chinese waters, hits Korea's west coast, then reaches Japan. Three countries, one problem, zero shared database. So I built one.
+    <span style="font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-faint);">Live data · GBIF occurrence records · past 5 years</span>
+  </div>
+  <a href="submit.html" class="btn btn-teal btn-sm">+ Report a sighting</a>
+</div>
+
+<div class="map-page-layout">
+  <div class="map-panel">
+    <div class="map-toolbar">
+      <button class="species-btn active" data-id="nomurai" data-sci="Nemopilema nomurai" data-region="East Asia (KR/CN/JP)">Nomura's Jellyfish 🪼</button>
+      <button class="species-btn" data-id="moon" data-sci="Aurelia aurita" data-region="Global coastal waters">Moon Jellyfish</button>
+      <button class="species-btn" data-id="mauve" data-sci="Pelagia noctiluca" data-region="Mediterranean / Pacific">Mauve Stinger</button>
     </div>
-    <div class="hero-actions">
-      <a href="submit.html" class="btn btn-teal">Report a sighting →</a>
-      <a href="map.html" class="btn btn-outline">See live map</a>
-      <a href="research.html" class="btn btn-outline">Read the research</a>
+    <div id="map-container">
+      <div class="loading-map" id="map-loading"><div class="spinner"></div><span>Fetching GBIF records…</span></div>
+      <div id="map" style="display:none;"></div>
+    </div>
+    <div class="map-legend">
+      <div class="legend-item"><div class="legend-dot dot-high"></div>High density (40+ sightings/cell)</div>
+      <div class="legend-item"><div class="legend-dot dot-med"></div>Medium (15–39)</div>
+      <div class="legend-item"><div class="legend-dot dot-low"></div>Low (&lt;15)</div>
     </div>
   </div>
-  <div>
-    <div class="founder-video-wrap">
-      <div class="founder-video-placeholder">
-        <div class="video-play-hint">▶</div>
-        <div class="video-label">
-          <strong>Why I started JellyWatch</strong>
-          <span>~30 sec · replace with video or YouTube embed</span>
-        </div>
+
+  <div class="side-panel">
+    <div class="side-card">
+      <h4>Species info</h4>
+      <div class="metric-row"><span class="metric-label">Scientific name</span><span class="metric-val" id="m-sci" style="font-size:11px;">Nemopilema nomurai</span></div>
+      <div class="metric-row"><span class="metric-label">Main hotspot</span><span class="metric-val" id="m-region" style="font-size:11px;">East Asia</span></div>
+      <div class="metric-row"><span class="metric-label">Records (5yr)</span><span class="metric-val" id="m-records">Loading…</span></div>
+      <div class="metric-row"><span class="metric-label">Grid cells</span><span class="metric-val" id="m-cells">—</span></div>
+    </div>
+    <div class="side-card">
+      <h4>Bloom density breakdown</h4>
+      <div class="bloom-bars">
+        <div class="bar-row"><span class="bar-name">High</span><div class="bar-track"><div class="bar-fill high" id="bar-high" style="width:0%"></div></div><span class="bar-count" id="cnt-high">0</span></div>
+        <div class="bar-row"><span class="bar-name">Med</span><div class="bar-track"><div class="bar-fill med" id="bar-med" style="width:0%"></div></div><span class="bar-count" id="cnt-med">0</span></div>
+        <div class="bar-row"><span class="bar-name">Low</span><div class="bar-track"><div class="bar-fill low" id="bar-low" style="width:0%"></div></div><span class="bar-count" id="cnt-low">0</span></div>
       </div>
-      <!-- Replace above with:
-      <iframe width="100%" height="215" src="https://www.youtube.com/embed/YOUR_ID"
-        title="Why I started JellyWatch" frameborder="0" allowfullscreen
-        style="display:block;"></iframe> -->
     </div>
-    <div class="notebook">
-      <div class="notebook-header">📓 What I've found so far</div>
-      <div class="notebook-body">
-        <div class="nb-row"><span class="nb-label">GBIF occurrences tracked</span><span class="nb-val teal" id="hero-records">Loading…</span></div>
-        <div class="nb-row"><span class="nb-label">High-bloom zones mapped</span><span class="nb-val red" id="hero-cells">—</span></div>
-        <div class="nb-row"><span class="nb-label">Countries in the network</span><span class="nb-val">3</span></div>
-        <div class="nb-row"><span class="nb-label">Volunteer monitors needed</span><span class="nb-val yellow">500+</span></div>
-        <div class="nb-note">⚠️ Numbers from GBIF's public dataset — real scientific records. Still integrating Korean-specific coastal data.</div>
-        <div class="country-flags">
-          <span class="cflag">🇰🇷 Korea</span><span class="cflag">🇨🇳 China</span><span class="cflag">🇯🇵 Japan</span>
-        </div>
+    <div class="side-card">
+      <h4>Fertilizer estimate (rough)</h4>
+      <div class="fert-grid">
+        <div class="fert-cell"><span class="val" id="f-wet">—</span><span class="lbl">Wet mass (kg)</span></div>
+        <div class="fert-cell"><span class="val" id="f-dry">—</span><span class="lbl">Dry mass (kg)</span></div>
+        <div class="fert-cell"><span class="val" id="f-n">—</span><span class="lbl">Nitrogen (kg)</span></div>
+        <div class="fert-cell"><span class="val" id="f-fert">—</span><span class="lbl">Fertilizer (kg)</span></div>
       </div>
+      <div class="soil-impact" id="f-soil">Loading…</div>
+    </div>
+    <div class="map-cta">
+      <p>Seen a bloom that isn't on the map? Your sighting helps fill the gaps.</p>
+      <a href="submit.html" class="btn btn-teal btn-sm">Report a sighting →</a>
     </div>
   </div>
 </div>
 
-<section style="background:var(--paper);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);">
-<div class="section-inner">
-  <div class="section-tag">Why it matters</div>
-  <h2>A billion-dollar crisis hiding in plain sight</h2>
-  <p class="section-lead">Jellyfish populations in the Yellow Sea, East China Sea, and Sea of Japan have expanded dramatically since the 1990s — with cascading damage that most people never see.</p>
-  <div class="inline-cta">
-    <div class="inline-cta-text">
-      <strong>Not sure if this is real? Read the science first.</strong>
-      <span>Award-winning research paper + competition pitch — then decide if you want to help.</span>
-    </div>
-    <a href="research.html" class="btn btn-teal btn-sm">See the research →</a>
-  </div>
-  <div class="problem-grid" style="margin-top:2rem;">
-    <div class="problem-card"><div class="problem-icon">🎣</div><h3>Fisheries collapse</h3><p>Dense blooms rip nets, contaminate catch, and eat the same plankton as fish larvae. Fishers in Chungnam, Liaoning, and Fukui report it gets worse every summer.</p><span class="sev sev-high">Severe</span></div>
-    <div class="problem-card"><div class="problem-icon">⚡</div><h3>Power plant shutdowns</h3><p>Nuclear and thermal plants pull seawater for cooling. Jellyfish clog the intakes. This has happened in Korea, China, and Japan — not once, repeatedly.</p><span class="sev sev-high">Severe</span></div>
-    <div class="problem-card"><div class="problem-icon">🐠</div><h3>Ecosystem tipping points</h3><p>Once jellyfish eat enough fish eggs and larvae, fish populations can't recover. The ecosystem flips into a jellyfish-dominant state — possibly already happening in the Yellow Sea.</p><span class="sev sev-high">Severe</span></div>
-    <div class="problem-card"><div class="problem-icon">♻️</div><h3>But they're useful</h3><p>Dried jellyfish biomass converts into nitrogen-rich agricultural fertilizer. Some Korean companies are already doing this. If we map where the blooms are, we can harvest them.</p><span class="sev sev-good">Opportunity</span></div>
-    <div class="problem-card"><div class="problem-icon">🌐</div><h3>Three countries, no shared data</h3><p>Korea, China, and Japan each monitor separately. A bloom that starts in Qingdao becomes Korea's problem in two weeks — but nobody gets an early warning.</p><span class="sev sev-high">The core gap</span></div>
-  </div>
-</div>
-</section>
-
-<section style="background:var(--cream);border-bottom:2px solid var(--ink);padding:3rem 2rem;">
-<div style="max-width:1160px;margin:0 auto;">
-  <div class="section-tag">From the field</div>
-  <p style="color:var(--ink-soft);font-size:0.9rem;max-width:560px;margin-bottom:1.75rem;line-height:1.7;">Photos from monitoring trips go here — bloom sightings, working with fishers, coastal fieldwork.</p>
-  <div class="photo-strip">
-    <div class="photo-slot"><div class="photo-placeholder">📷<br><span>Add photo</span><span class="photo-hint">Bloom sighting, west coast</span></div></div>
-    <div class="photo-slot"><div class="photo-placeholder">📷<br><span>Add photo</span><span class="photo-hint">Working with fishers</span></div></div>
-    <div class="photo-slot"><div class="photo-placeholder">📷<br><span>Add photo</span><span class="photo-hint">Nomura's jellyfish up close</span></div></div>
-    <div class="photo-slot"><div class="photo-placeholder">📷<br><span>Add photo</span><span class="photo-hint">Coastline panorama</span></div></div>
-  </div>
-</div>
-</section>
-
-<section style="background:var(--teal-light);border-bottom:2px solid var(--ink);">
-<div class="section-inner">
-  <div class="section-tag">How citizen science works here</div>
-  <h2>You don't need to be a marine biologist</h2>
-  <p class="section-lead">Professional monitoring covers maybe 5% of the relevant coastline. The rest needs people who actually live there.</p>
-  <div class="science-grid">
-    <div class="science-card"><span class="step-num">Step 01</span><h3>Spot it, photo it</h3><p>If you're near the coast and see a bloom, take a photo and <a href="submit.html" style="color:var(--teal);font-weight:700;">submit a report</a>. Species, rough density, location, date. That's it.</p></div>
-    <div class="science-card"><span class="step-num">Step 02</span><h3>We verify it</h3><p>Submissions are reviewed and cross-referenced. Verified sightings go into the shared database within 48 hours.</p></div>
-    <div class="science-card"><span class="step-num">Step 03</span><h3>Data becomes warnings</h3><p>Enough data points build a picture of where blooms are moving. Fishers and beach managers get early alerts before a bloom arrives.</p></div>
-    <div class="science-card"><span class="step-num">Step 04</span><h3>Blooms get harvested</h3><p>High-density alerts go to jellyfish-to-fertilizer operations. The problem funds its own solution — in theory. <a href="research.html" style="color:var(--teal);font-weight:700;">Read the research →</a></p></div>
-  </div>
-  <div style="margin-top:2rem;text-align:center;">
-    <a href="submit.html" class="btn btn-teal">Report a sighting →</a>
-    &nbsp;&nbsp;
-    <a href="map.html" class="btn btn-outline">View the live map</a>
-  </div>
-</div>
-</section>
-
-<section style="background:var(--paper);border-bottom:2px solid var(--ink);">
-<div class="section-inner">
-  <div class="section-tag">Tri-country network</div>
-  <h2>One sea. Three countries. Currently zero coordination.</h2>
-  <p class="section-lead">The Yellow Sea doesn't have a border. The jellyfish don't either. But the data does.</p>
-  <div class="countries-grid">
-    <div class="country-card kr"><span class="country-flag">🇰🇷</span><h3>Korea (한국)</h3><p>Korea's west coast gets hit hardest by Nomura's blooms drifting in from Chinese waters. Nearshore community reporting is almost nonexistent. This is where I'm starting.</p><span class="country-species">Focus: Nemopilema nomurai · Aurelia aurita</span></div>
-    <div class="country-card cn"><span class="country-flag">🇨🇳</span><h3>China (中国)</h3><p>The Yellow Sea and Bohai Bay are where Nomura's jellyfish breed before drifting east. Shandong and Liaoning fishing communities face significant annual losses.</p><span class="country-species">Focus: Nemopilema nomurai · Cyanea nozakii</span></div>
-    <div class="country-card jp"><span class="country-flag">🇯🇵</span><h3>Japan (日本)</h3><p>Japan has the most sophisticated monitoring infrastructure but doesn't share data with Korea or China in real time. Connecting the networks could extend early warning times from days to weeks.</p><span class="country-species">Focus: Nemopilema nomurai · Pelagia noctiluca</span></div>
-  </div>
-</div>
-</section>
-
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-async function fetchCount() {
-  try {
-    const yr = new Date().getFullYear();
-    const res = await fetch(`https://api.gbif.org/v1/occurrence/search?scientificName=Nemopilema+nomurai&hasCoordinate=true&year=${yr-5},${yr}&limit=1`);
-    const data = await res.json();
-    document.getElementById('hero-records').textContent = (data.count || 0).toLocaleString();
-    // rough high-bloom estimate
-    document.getElementById('hero-cells').textContent = Math.round((data.count || 0) / 40);
-  } catch(e) { document.getElementById('hero-records').textContent = 'See map →'; }
+const THR={high:40,medium:15};
+const cache={};
+let map=null,markers=null;
+
+function initMap(){
+  map=L.map("map",{center:[30,128],zoom:4,minZoom:2,maxZoom:9});
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"&copy; OpenStreetMap contributors"}).addTo(map);
+  markers=L.layerGroup().addTo(map);
 }
-fetchCount();
+
+async function fetchSpecies(sci){
+  if(cache[sci])return cache[sci];
+  let all=[],offset=0,yr=new Date().getFullYear();
+  while(all.length<2500){
+    const q=new URLSearchParams({scientificName:sci,hasCoordinate:"true",year:`${yr-5},${yr}`,limit:300,offset}).toString();
+    const res=await fetch(`https://api.gbif.org/v1/occurrence/search?${q}`);
+    if(!res.ok)throw new Error("GBIF "+res.status);
+    const data=await res.json();
+    all=all.concat((data.results||[]).filter(r=>typeof r.decimalLatitude==="number"&&typeof r.decimalLongitude==="number").map(r=>({lat:r.decimalLatitude,lng:r.decimalLongitude})));
+    if(data.endOfRecords)break;
+    offset+=300;
+  }
+  cache[sci]=all.slice(0,2500);return cache[sci];
+}
+
+function gridCells(pts){
+  const g=new Map();
+  pts.forEach(p=>{const k=`${Math.floor(p.lat)}_${Math.floor(p.lng)}`;const c=g.get(k)||{lat:Math.floor(p.lat)+0.5,lng:Math.floor(p.lng)+0.5,count:0};c.count++;g.set(k,c);});
+  let hi=0,me=0,lo=0;const cells=[];
+  g.forEach(c=>{const risk=c.count>=THR.high?"High":c.count>=THR.medium?"Medium":"Low";if(risk==="High")hi++;else if(risk==="Medium")me++;else lo++;cells.push({...c,risk});});
+  return{cells,hi,me,lo};
+}
+
+function fmt(n){if(n>=1e6)return(n/1e6).toFixed(1)+"M";if(n>=1e3)return(n/1e3).toFixed(1)+"K";return String(Math.round(n));}
+
+function renderMap(cells){
+  markers.clearLayers();
+  const maxC=cells.reduce((m,c)=>Math.max(m,c.count),1);
+  cells.forEach(c=>{
+    const norm=c.count/maxC;
+    const col=c.risk==="High"?"#e05a3a":c.risk==="Medium"?"#3aaa5a":"#3a7bd5";
+    L.circleMarker([c.lat,c.lng],{radius:3+norm*12,color:col,fillColor:col,fillOpacity:0.3+norm*0.55,weight:0.5})
+     .bindTooltip(`<strong>${c.risk} density</strong><br>${c.count} observations`).addTo(markers);
+  });
+}
+
+function updateUI(sci,region,total,g){
+  document.getElementById("m-sci").textContent=sci;
+  document.getElementById("m-region").textContent=region;
+  document.getElementById("m-records").textContent=total.toLocaleString();
+  document.getElementById("m-cells").textContent=g.cells.length;
+  const t=g.hi+g.me+g.lo||1;
+  document.getElementById("bar-high").style.width=(g.hi/t*100)+"%";
+  document.getElementById("bar-med").style.width=(g.me/t*100)+"%";
+  document.getElementById("bar-low").style.width=(g.lo/t*100)+"%";
+  document.getElementById("cnt-high").textContent=g.hi;
+  document.getElementById("cnt-med").textContent=g.me;
+  document.getElementById("cnt-low").textContent=g.lo;
+  const wet=total*2,dry=wet*0.05,nitrogen=dry*0.1,fert=dry*0.6,ha=(fert/0.002/10000).toFixed(2);
+  document.getElementById("f-wet").textContent=fmt(wet);
+  document.getElementById("f-dry").textContent=fmt(dry);
+  document.getElementById("f-n").textContent=fmt(nitrogen);
+  document.getElementById("f-fert").textContent=fmt(fert);
+  document.getElementById("f-soil").innerHTML=`<strong>Soil impact:</strong> ~${ha} hectares enrichable. (2kg avg wet mass per record — rough estimate.)`;
+}
+
+async function loadSpecies(btn){
+  const sci=btn.dataset.sci, region=btn.dataset.region;
+  document.getElementById("m-records").textContent="Loading…";
+  document.getElementById("f-soil").textContent="Loading…";
+  try{
+    const pts=await fetchSpecies(sci);
+    const g=gridCells(pts);
+    const loading=document.getElementById("map-loading");
+    const mapEl=document.getElementById("map");
+    if(loading.style.display!=="none"){loading.style.display="none";mapEl.style.display="block";initMap();}
+    renderMap(g.cells);updateUI(sci,region,pts.length,g);
+  }catch(e){
+    document.getElementById("m-records").textContent="Error — try refreshing";
+    document.getElementById("f-soil").textContent="Could not reach GBIF.";
+    console.error(e);
+  }
+}
+
+document.querySelectorAll(".species-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".species-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");loadSpecies(btn);
+  });
+});
+
+loadSpecies(document.querySelector(".species-btn.active"));
 </script>
 
 <footer>
