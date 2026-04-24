@@ -36,7 +36,7 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);fo
 .card::after{content:'';position:absolute;inset:3px;border-radius:9px;border:1px dashed rgba(0,0,0,0.08);pointer-events:none;}
 
 /* ── NAV ── */
-nav{background:var(--paper);border-bottom:2px solid var(--ink);padding:0 2rem;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000;}
+nav{background:var(--paper);border-bottom:2px solid var(--ink);padding:0;height:58px;position:sticky;top:0;z-index:1000;}.nav-inner{max-width:1160px;margin:0 auto;padding:0 2rem;height:58px;display:flex;align-items:center;justify-content:space-between;}
 .nav-logo{font-family:'Space Mono',monospace;font-size:1.1rem;font-weight:700;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:6px;}
 .nav-logo .logo-tag{background:var(--yellow);color:var(--ink);padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:700;letter-spacing:0.04em;margin-left:4px;border:1px solid var(--yellow-dark);}
 nav ul{list-style:none;display:flex;gap:1.75rem;}
@@ -278,6 +278,7 @@ nav a.active{color:var(--teal);border-bottom:2px solid var(--teal);padding-botto
 </head>
 <body>
 <nav>
+  <div class="nav-inner">
   <a href="index.html" class="nav-logo">🪼 JellyWatch <span class="logo-tag">student project</span></a>
   <ul>
     <li><a href="index.html">Home</a></li>
@@ -287,6 +288,7 @@ nav a.active{color:var(--teal);border-bottom:2px solid var(--teal);padding-botto
     <li><a href="about.html" class="active">About</a></li>
     <li><a href="submit.html" class="nav-cta">Join</a></li>
   </ul>
+  </div>
 </nav>
 
 <div style="background:var(--paper);border-bottom:2px solid var(--ink);padding:1.5rem 2rem;">

@@ -37,7 +37,7 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);fo
 .card::after{content:'';position:absolute;inset:3px;border-radius:9px;border:1px dashed rgba(0,0,0,0.08);pointer-events:none;}
 
 /* ── NAV ── */
-nav{background:var(--paper);border-bottom:2px solid var(--ink);padding:0 2rem;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000;}
+nav{background:var(--paper);border-bottom:2px solid var(--ink);padding:0;height:58px;position:sticky;top:0;z-index:1000;}.nav-inner{max-width:1160px;margin:0 auto;padding:0 2rem;height:58px;display:flex;align-items:center;justify-content:space-between;}
 .nav-logo{font-family:'Space Mono',monospace;font-size:1.1rem;font-weight:700;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:6px;}
 .nav-logo .logo-tag{background:var(--yellow);color:var(--ink);padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:700;letter-spacing:0.04em;margin-left:4px;border:1px solid var(--yellow-dark);}
 nav ul{list-style:none;display:flex;gap:1.75rem;}
@@ -87,7 +87,7 @@ h1 .hl{color:var(--teal);border-bottom:3px solid var(--yellow);}
 .section-tag{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-faint);margin-bottom:0.75rem;}
 h2{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;letter-spacing:-0.02em;line-height:1.2;margin-bottom:1rem;}
 .section-lead{color:var(--ink-soft);font-size:1rem;max-width:600px;line-height:1.8;margin-bottom:2.5rem;}
-.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem;}
+.problem-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;}
 .problem-card{background:var(--cream);border:2px solid var(--border-dark);border-radius:12px;padding:1.5rem;transition:border-color 0.2s,transform 0.15s;}
 .problem-card:hover{border-color:var(--ink);transform:translateY(-2px);}
 .problem-icon{font-size:1.75rem;margin-bottom:0.75rem;}
@@ -272,7 +272,7 @@ h1 .hl{color:var(--teal);border-bottom:3px solid var(--yellow);}
 .video-play-hint{width:52px;height:52px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;padding-left:4px;}
 .video-label strong{display:block;font-size:0.9rem;color:var(--ink);margin-bottom:4px;}
 .video-label span{font-size:11.5px;color:var(--ink-soft);font-family:'Space Mono',monospace;}
-.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem;}
+.problem-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;}
 .problem-card{background:var(--cream);border:2px solid var(--border-dark);border-radius:12px;padding:1.5rem;transition:border-color 0.2s,transform 0.15s;}
 .problem-card:hover{border-color:var(--ink);transform:translateY(-2px);}
 .problem-icon{font-size:1.75rem;margin-bottom:0.75rem;}
@@ -301,10 +301,27 @@ h1 .hl{color:var(--teal);border-bottom:3px solid var(--yellow);}
 .photo-placeholder .photo-hint{font-size:11px;color:var(--ink-faint);font-style:italic;}
 @media(max-width:900px){.countries-grid{grid-template-columns:1fr;}.photo-strip{grid-template-columns:1fr 1fr;}}
 
+
+.page-wrap{max-width:1160px;margin:0 auto;padding:0 2rem;}
+.hero-grid{padding-top:4rem;padding-bottom:2rem;display:grid;grid-template-columns:1fr 380px;gap:3rem;align-items:start;}
+.map-preview-section{background:var(--paper);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
+.map-preview-inner{max-width:1160px;margin:0 auto;padding:3rem 2rem;}
+.map-preview-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:1rem;}
+.map-preview-header h2{font-size:1.4rem;font-weight:800;letter-spacing:-0.02em;margin:0;}
+#preview-map{height:360px;border-radius:10px;border:2px solid var(--ink);overflow:hidden;}
+.map-preview-footer{display:flex;align-items:center;justify-content:space-between;margin-top:0.75rem;flex-wrap:wrap;gap:0.75rem;}
+.preview-legend{display:flex;gap:1rem;font-size:11px;color:var(--ink-soft);}
+.preview-legend-item{display:flex;align-items:center;gap:5px;}
+.preview-legend-dot{width:8px;height:8px;border-radius:50%;}
+.map-loading-preview{display:flex;align-items:center;justify-content:center;height:360px;color:var(--ink-faint);font-size:13px;gap:8px;background:var(--cream);border-radius:10px;border:2px solid var(--ink);}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;}.problem-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}}
+@media(max-width:600px){.problem-grid{grid-template-columns:1fr !important;}}
+
 </style>
 </head>
 <body>
 <nav>
+  <div class="nav-inner">
   <a href="index.html" class="nav-logo">🪼 JellyWatch <span class="logo-tag">student project</span></a>
   <ul>
     <li><a href="index.html" class=" active">Home</a></li>
@@ -314,9 +331,10 @@ h1 .hl{color:var(--teal);border-bottom:3px solid var(--yellow);}
     <li><a href="about.html" class="">About</a></li>
     <li><a href="submit.html" class="nav-cta">Join</a></li>
   </ul>
+  </div>
 </nav>
 
-<div style="max-width:1160px;margin:0 auto;padding:4rem 2rem 2rem;display:grid;grid-template-columns:1fr 380px;gap:3rem;align-items:start;">
+<div class="page-wrap hero-grid">
   <div>
     <div class="hero-tag">🌊 Citizen Science · Korea · China · Japan</div>
     <h1>Korea's coasts are getting<br><span class="hl">wrecked by jellyfish.</span><br>I'm trying to do something about it.</h1>
@@ -382,8 +400,35 @@ h1 .hl{color:var(--teal);border-bottom:3px solid var(--yellow);}
 </div>
 </section>
 
+<section class="map-preview-section">
+  <div class="map-preview-inner">
+    <div class="map-preview-header">
+      <div>
+        <div class="section-tag" style="margin-bottom:0.4rem;">Live data · GBIF records · Nomura's Jellyfish</div>
+        <h2>Where blooms are happening right now</h2>
+      </div>
+      <a href="map.html" class="btn btn-teal btn-sm">Open full map →</a>
+    </div>
+    <div id="preview-map-wrap">
+      <div class="map-loading-preview" id="preview-loading">
+        <div class="spinner"></div><span>Loading bloom data…</span>
+      </div>
+      <div id="preview-map" style="display:none;"></div>
+    </div>
+    <div class="map-preview-footer">
+      <div class="preview-legend">
+        <div class="preview-legend-item"><div class="preview-legend-dot" style="background:#e05a3a;"></div>High (40+ obs)</div>
+        <div class="preview-legend-item"><div class="preview-legend-dot" style="background:#3aaa5a;"></div>Medium (15–39)</div>
+        <div class="preview-legend-item"><div class="preview-legend-dot" style="background:#3a7bd5;"></div>Low (&lt;15)</div>
+      </div>
+      <span style="font-size:11px;color:var(--ink-faint);">Nomura's jellyfish · past 5 years · <a href="https://gbif.org" target="_blank" style="color:var(--teal);">GBIF.org</a></span>
+    </div>
+  </div>
+</section>
+
+
 <section style="background:var(--cream);border-bottom:2px solid var(--ink);padding:3rem 2rem;">
-<div style="max-width:1160px;margin:0 auto;">
+<div class="page-wrap">
   <div class="section-tag">From the field</div>
   <p style="color:var(--ink-soft);font-size:0.9rem;max-width:560px;margin-bottom:1.75rem;line-height:1.7;">Photos from monitoring trips go here — bloom sightings, working with fishers, coastal fieldwork.</p>
   <div class="photo-strip">
@@ -395,7 +440,7 @@ h1 .hl{color:var(--teal);border-bottom:3px solid var(--yellow);}
 </div>
 </section>
 
-<section style="background:var(--teal-light);border-bottom:2px solid var(--ink);">
+<section style="background:var(--teal-light);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);">
 <div class="section-inner">
   <div class="section-tag">How citizen science works here</div>
   <h2>You don't need to be a marine biologist</h2>
@@ -427,19 +472,7 @@ h1 .hl{color:var(--teal);border-bottom:3px solid var(--yellow);}
 </div>
 </section>
 
-<script>
-async function fetchCount() {
-  try {
-    const yr = new Date().getFullYear();
-    const res = await fetch(`https://api.gbif.org/v1/occurrence/search?scientificName=Nemopilema+nomurai&hasCoordinate=true&year=${yr-5},${yr}&limit=1`);
-    const data = await res.json();
-    document.getElementById('hero-records').textContent = (data.count || 0).toLocaleString();
-    // rough high-bloom estimate
-    document.getElementById('hero-cells').textContent = Math.round((data.count || 0) / 40);
-  } catch(e) { document.getElementById('hero-records').textContent = 'See map →'; }
-}
-fetchCount();
-</script>
+
 
 <footer>
   <div class="footer-inner">
@@ -447,5 +480,58 @@ fetchCount();
     <p>Occurrence data: <a href="https://gbif.org" target="_blank">GBIF.org</a> · Open source · Not affiliated with any government or institution</p>
   </div>
 </footer>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(async function() {
+  try {
+    const yr = new Date().getFullYear();
+    let all = [], offset = 0;
+    while (all.length < 1000) {
+      const q = new URLSearchParams({scientificName:'Nemopilema nomurai',hasCoordinate:'true',year:`${yr-5},${yr}`,limit:300,offset}).toString();
+      const res = await fetch(`https://api.gbif.org/v1/occurrence/search?${q}`);
+      if (!res.ok) break;
+      const data = await res.json();
+      all = all.concat((data.results||[]).filter(r=>typeof r.decimalLatitude==='number').map(r=>({lat:r.decimalLatitude,lng:r.decimalLongitude})));
+      if (data.endOfRecords) break;
+      offset += 300;
+    }
+
+    // grid
+    const g = new Map();
+    all.forEach(p => {
+      const k = `${Math.floor(p.lat)}_${Math.floor(p.lng)}`;
+      const c = g.get(k) || {lat:Math.floor(p.lat)+0.5,lng:Math.floor(p.lng)+0.5,count:0};
+      c.count++; g.set(k,c);
+    });
+
+    document.getElementById('preview-loading').style.display = 'none';
+    const mapEl = document.getElementById('preview-map');
+    mapEl.style.display = 'block';
+
+    const map = L.map('preview-map', {center:[30,128],zoom:3,minZoom:2,maxZoom:7,zoomControl:true,attributionControl:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    const maxC = Math.max(...[...g.values()].map(c=>c.count), 1);
+    g.forEach(c => {
+      const norm = c.count/maxC;
+      const col = c.count>=40 ? '#e05a3a' : c.count>=15 ? '#3aaa5a' : '#3a7bd5';
+      L.circleMarker([c.lat,c.lng],{radius:3+norm*10,color:col,fillColor:col,fillOpacity:0.35+norm*0.5,weight:0.5})
+       .bindTooltip(`${c.count} observations`).addTo(map);
+    });
+
+    // update hero counter
+    document.getElementById('hero-records').textContent = all.length.toLocaleString();
+    const highCount = [...g.values()].filter(c=>c.count>=40).length;
+    document.getElementById('hero-cells').textContent = highCount;
+
+  } catch(e) {
+    document.getElementById('preview-loading').textContent = 'Could not load map data.';
+    console.error(e);
+  }
+})();
+</script>
+
 </body>
 </html>
