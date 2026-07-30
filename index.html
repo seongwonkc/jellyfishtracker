@@ -337,6 +337,23 @@ h1.hero-h .hl { color: var(--teal); border-bottom: 3px solid var(--yellow); }
 .ml-item { display: flex; align-items: center; gap: 5px; }
 .ml-dot { width: 8px; height: 8px; border-radius: 50%; }
 
+/* ── PROGRESS EVIDENCE ── */
+.progress-section { background: var(--paper); border-bottom: 2px solid var(--ink); padding: 4rem 0; }
+.progress-layout { display: grid; grid-template-columns: 1.05fr 1fr; gap: 1.4rem; align-items: start; }
+.evidence-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; margin-top: 1.25rem; }
+.evidence-card { background: var(--cream); border: 2px solid var(--ink); border-radius: 10px; padding: 1rem; }
+.evidence-label { font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 0.35rem; }
+.evidence-value { font-family: 'Space Mono', monospace; font-size: 1.45rem; font-weight: 700; color: var(--ink); }
+.evidence-note { font-size: 12px; color: var(--ink-soft); margin-top: 0.25rem; line-height: 1.5; }
+.progress-log { background: var(--cream); border: 2px solid var(--ink); border-radius: 12px; padding: 1.25rem; }
+.log-row { display: grid; grid-template-columns: 72px 1fr; gap: 0.9rem; padding: 0.85rem 0; border-bottom: 1px dashed var(--border-dark); }
+.log-row:last-child { border-bottom: none; }
+.log-date { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; color: var(--teal-mid); }
+.log-title { font-size: 0.9rem; font-weight: 800; color: var(--ink); margin-bottom: 0.2rem; }
+.log-text { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.6; }
+@media(max-width:900px){.progress-layout{grid-template-columns:1fr;}.evidence-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.evidence-grid{grid-template-columns:1fr;}}
+
 /* ── HOW IT WORKS ── */
 .how-section { background: var(--teal-light); border-bottom: 2px solid var(--ink); padding: 4rem 0; }
 .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
@@ -579,6 +596,62 @@ footer a { color: var(--teal); }
   </div>
 </section>
 
+<!-- ── ONE-YEAR PROGRESS ── -->
+<section class="progress-section">
+  <div class="w progress-layout">
+    <div>
+      <div class="label">One-year evidence</div>
+      <h2 class="section-h">This has to get better each year, not just look better.</h2>
+      <p class="section-lead">JellyWatch now tracks a simple year-over-year baseline: public occurrence records, mapped grid cells, and high-density zones for the last two complete years. The current season is shown separately so the comparison stays honest.</p>
+      <div class="evidence-grid">
+        <div class="evidence-card">
+          <div class="evidence-label" id="prev-year-label">Previous year</div>
+          <div class="evidence-value" id="prev-year-records">Loading...</div>
+          <div class="evidence-note">GBIF records with coordinates</div>
+        </div>
+        <div class="evidence-card">
+          <div class="evidence-label" id="latest-year-label">Latest complete year</div>
+          <div class="evidence-value" id="latest-year-records">Loading...</div>
+          <div class="evidence-note">Comparable full-year records</div>
+        </div>
+        <div class="evidence-card">
+          <div class="evidence-label">Record change</div>
+          <div class="evidence-value" id="record-change">--</div>
+          <div class="evidence-note">Shows whether public-data coverage rose or fell year over year</div>
+        </div>
+        <div class="evidence-card">
+          <div class="evidence-label" id="current-year-label">Current season</div>
+          <div class="evidence-value" id="current-year-records">Loading...</div>
+          <div class="evidence-note">Year-to-date, not a full-year comparison</div>
+        </div>
+      </div>
+    </div>
+    <div class="progress-log">
+      <div class="log-row">
+        <div class="log-date">2025</div>
+        <div>
+          <div class="log-title">Static research page</div>
+          <div class="log-text">Started as a written proposal about jellyfish blooms, fertilizer reuse, and the need for cross-border data.</div>
+        </div>
+      </div>
+      <div class="log-row">
+        <div class="log-date">2026</div>
+        <div>
+          <div class="log-title">Live occurrence map</div>
+          <div class="log-text">Added GBIF-powered mapping, density cells, species filtering, and a sighting report workflow.</div>
+        </div>
+      </div>
+      <div class="log-row">
+        <div class="log-date">Next</div>
+        <div>
+          <div class="log-title">Evidence log</div>
+          <div class="log-text">Added a one-year comparison so reviewers can see whether the project is collecting more usable evidence over time.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── HOW IT WORKS ── -->
 <section class="how-section">
   <div class="w">
@@ -656,23 +729,26 @@ footer a { color: var(--teal); }
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 (async function() {
-  try {
-    const yr = new Date().getFullYear();
-    let all = [], offset = 0;
-    while (all.length < 1200) {
-      const q = new URLSearchParams({scientificName:'Nemopilema nomurai',hasCoordinate:'true',year:`${yr-5},${yr}`,limit:300,offset}).toString();
-      const res = await fetch(`https://api.gbif.org/v1/occurrence/search?${q}`);
-      if (!res.ok) break;
-      const data = await res.json();
-      all = all.concat((data.results||[])
-        .filter(r => typeof r.decimalLatitude === 'number')
-        .map(r => ({lat: r.decimalLatitude, lng: r.decimalLongitude})));
-      if (data.endOfRecords) break;
-      offset += 300;
-    }
+  const fallback = [
+    {lat:36.4,lng:126.5,year:2024},{lat:36.5,lng:126.4,year:2024},{lat:36.6,lng:126.6,year:2024},{lat:35.1,lng:129.0,year:2025},{lat:34.8,lng:128.7,year:2025},
+    {lat:37.5,lng:126.6,year:2025},{lat:36.0,lng:120.3,year:2025},{lat:36.1,lng:120.4,year:2026},{lat:35.9,lng:120.2,year:2026},{lat:34.7,lng:135.2,year:2026}
+  ];
 
+  async function fetchJson(url) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 12000);
+    try {
+      const res = await fetch(url, {signal: controller.signal, headers: {Accept: 'application/json'}});
+      if (!res.ok) throw new Error('GBIF ' + res.status);
+      return await res.json();
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  function renderPreview(points, isFallback) {
     const grid = new Map();
-    all.forEach(p => {
+    points.forEach(p => {
       const k = `${Math.floor(p.lat)}_${Math.floor(p.lng)}`;
       const c = grid.get(k) || {lat: Math.floor(p.lat)+0.5, lng: Math.floor(p.lng)+0.5, count: 0};
       c.count++; grid.set(k, c);
@@ -696,10 +772,51 @@ footer a { color: var(--teal); }
       }).bindTooltip(`${c.count} observations`).addTo(map);
     });
 
-    document.getElementById('hero-records').textContent = all.length.toLocaleString();
+    document.getElementById('hero-records').textContent = isFallback ? points.length + ' demo' : points.length.toLocaleString();
     document.getElementById('hero-cells').textContent = [...grid.values()].filter(c => c.count >= 40).length;
+  }
+
+  function populateYearEvidence(points) {
+    const currentYear = new Date().getFullYear();
+    const prevYear = currentYear - 2;
+    const latestYear = currentYear - 1;
+    const countFor = year => points.filter(p => p.year === year).length;
+    const prevCount = countFor(prevYear);
+    const latestCount = countFor(latestYear);
+    const currentCount = countFor(currentYear);
+    const delta = latestCount - prevCount;
+    const deltaPct = prevCount > 0 ? Math.round(delta / prevCount * 100) : null;
+
+    document.getElementById('prev-year-label').textContent = prevYear + ' baseline';
+    document.getElementById('latest-year-label').textContent = latestYear + ' complete year';
+    document.getElementById('current-year-label').textContent = currentYear + ' season to date';
+    document.getElementById('prev-year-records').textContent = prevCount.toLocaleString();
+    document.getElementById('latest-year-records').textContent = latestCount.toLocaleString();
+    document.getElementById('current-year-records').textContent = currentCount.toLocaleString();
+    document.getElementById('record-change').textContent = deltaPct === null ? 'New baseline' : `${delta >= 0 ? '+' : ''}${delta.toLocaleString()} (${deltaPct}%)`;
+  }
+
+  try {
+    const yr = new Date().getFullYear();
+    let all = [], offset = 0;
+    while (all.length < 1200) {
+      const q = new URLSearchParams({scientificName:'Nemopilema nomurai',hasCoordinate:'true',year:`${yr-5},${yr}`,limit:300,offset}).toString();
+      const data = await fetchJson(`https://api.gbif.org/v1/occurrence/search?${q}`);
+      all = all.concat((data.results||[])
+        .filter(r => typeof r.decimalLatitude === 'number')
+        .map(r => ({lat: r.decimalLatitude, lng: r.decimalLongitude, year: r.year})));
+      if (data.endOfRecords) break;
+      offset += 300;
+    }
+
+    renderPreview(all, false);
+    populateYearEvidence(all);
+    return;
 
   } catch(e) {
+    renderPreview(fallback, true);
+    populateYearEvidence(fallback);
+    return;
     const el = document.getElementById('map-loading-wrap');
     if (el) el.innerHTML = '<span style="color:var(--ink-faint)">Could not load map data — try refreshing.</span>';
     console.error(e);

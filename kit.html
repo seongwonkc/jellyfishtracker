@@ -557,14 +557,24 @@ nav a.active{color:var(--teal);border-bottom:2px solid var(--teal);padding-botto
 
 <script>
 const form = document.getElementById('kit-form');
+function showKitSuccess() {
+  form.style.display = 'none';
+  document.getElementById('kit-success').style.display = 'block';
+}
+function isLocalPreview() {
+  return location.protocol === 'file:' || ['localhost', '127.0.0.1'].includes(location.hostname);
+}
 if (form) {
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
+    if (isLocalPreview()) {
+      showKitSuccess();
+      return;
+    }
     try {
       const res = await fetch('/', {method:'POST', body: new FormData(form)});
       if (res.ok) {
-        form.style.display = 'none';
-        document.getElementById('kit-success').style.display = 'block';
+        showKitSuccess();
       } else { alert('Something went wrong. Please try again.'); }
     } catch(err) { alert('Could not submit. Check your connection.'); }
   });

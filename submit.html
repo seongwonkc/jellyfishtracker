@@ -463,16 +463,26 @@ nav a.active{color:var(--teal);border-bottom:2px solid var(--teal);padding-botto
 <script>
 // Netlify handles the actual POST — this just shows success state
 const form = document.getElementById('sighting-form');
+function showSightingSuccess() {
+  form.style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+  window.scrollTo({top: form.closest('div').offsetTop - 100, behavior: 'smooth'});
+}
+function isLocalPreview() {
+  return location.protocol === 'file:' || ['localhost', '127.0.0.1'].includes(location.hostname);
+}
 if (form) {
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
+    if (isLocalPreview()) {
+      showSightingSuccess();
+      return;
+    }
     const data = new FormData(form);
     try {
       const res = await fetch('/', {method:'POST', body: data});
       if (res.ok) {
-        form.style.display = 'none';
-        document.getElementById('form-success').style.display = 'block';
-        window.scrollTo({top: form.closest('div').offsetTop - 100, behavior: 'smooth'});
+        showSightingSuccess();
       } else {
         alert('Something went wrong. Try refreshing and resubmitting.');
       }

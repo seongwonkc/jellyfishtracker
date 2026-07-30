@@ -366,6 +366,20 @@ nav a.active{color:var(--teal);border-bottom:2px solid var(--teal);padding-botto
 <script>
 const THR={high:40,medium:15};
 const cache={};
+const FALLBACK={
+  "Nemopilema nomurai":[
+    {lat:36.4,lng:126.5},{lat:36.5,lng:126.4},{lat:36.6,lng:126.6},{lat:35.1,lng:129.0},{lat:34.8,lng:128.7},
+    {lat:37.5,lng:126.6},{lat:36.0,lng:120.3},{lat:36.1,lng:120.4},{lat:35.9,lng:120.2},{lat:34.7,lng:135.2}
+  ],
+  "Aurelia aurita":[
+    {lat:37.4,lng:126.7},{lat:35.2,lng:129.1},{lat:33.5,lng:126.5},{lat:31.2,lng:121.5},{lat:35.7,lng:139.7},
+    {lat:34.6,lng:135.0},{lat:39.9,lng:116.4},{lat:22.3,lng:114.1}
+  ],
+  "Pelagia noctiluca":[
+    {lat:35.7,lng:14.5},{lat:39.5,lng:2.6},{lat:41.4,lng:2.2},{lat:43.3,lng:5.4},{lat:36.8,lng:-2.4},
+    {lat:38.1,lng:13.4},{lat:37.9,lng:23.7}
+  ]
+};
 let map=null,markers=null;
 
 function initMap(){
@@ -374,14 +388,24 @@ function initMap(){
   markers=L.layerGroup().addTo(map);
 }
 
+async function fetchJson(url){
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),12000);
+  try{
+    const res=await fetch(url,{signal:controller.signal,headers:{Accept:"application/json"}});
+    if(!res.ok)throw new Error("GBIF "+res.status);
+    return await res.json();
+  }finally{
+    clearTimeout(timer);
+  }
+}
+
 async function fetchSpecies(sci){
   if(cache[sci])return cache[sci];
   let all=[],offset=0,yr=new Date().getFullYear();
   while(all.length<2500){
     const q=new URLSearchParams({scientificName:sci,hasCoordinate:"true",year:`${yr-5},${yr}`,limit:300,offset}).toString();
-    const res=await fetch(`https://api.gbif.org/v1/occurrence/search?${q}`);
-    if(!res.ok)throw new Error("GBIF "+res.status);
-    const data=await res.json();
+    const data=await fetchJson(`https://api.gbif.org/v1/occurrence/search?${q}`);
     all=all.concat((data.results||[]).filter(r=>typeof r.decimalLatitude==="number"&&typeof r.decimalLongitude==="number").map(r=>({lat:r.decimalLatitude,lng:r.decimalLongitude})));
     if(data.endOfRecords)break;
     offset+=300;
@@ -432,8 +456,8 @@ function updateUI(sci,region,total,g){
 
 async function loadSpecies(btn){
   const sci=btn.dataset.sci, region=btn.dataset.region;
-  document.getElementById("m-records").textContent="Loading…";
-  document.getElementById("f-soil").textContent="Loading…";
+  document.getElementById("m-records").textContent="Loading...";
+  document.getElementById("f-soil").textContent="Loading...";
   try{
     const pts=await fetchSpecies(sci);
     const g=gridCells(pts);
@@ -442,8 +466,14 @@ async function loadSpecies(btn){
     if(loading.style.display!=="none"){loading.style.display="none";mapEl.style.display="block";initMap();}
     renderMap(g.cells);updateUI(sci,region,pts.length,g);
   }catch(e){
-    document.getElementById("m-records").textContent="Error — try refreshing";
-    document.getElementById("f-soil").textContent="Could not reach GBIF.";
+    const pts=FALLBACK[sci]||[];
+    const g=gridCells(pts);
+    const loading=document.getElementById("map-loading");
+    const mapEl=document.getElementById("map");
+    if(loading.style.display!=="none"){loading.style.display="none";mapEl.style.display="block";initMap();}
+    renderMap(g.cells);updateUI(sci,region,pts.length,g);
+    document.getElementById("m-records").textContent=pts.length+" demo";
+    document.getElementById("f-soil").innerHTML="<strong>Demo mode:</strong> GBIF could not be reached, so the map is showing sample points for presentation continuity.";
     console.error(e);
   }
 }
