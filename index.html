@@ -295,6 +295,12 @@ h1.hero-h .hl { color: var(--teal); border-bottom: 3px solid var(--yellow); }
 .video-play { width: 48px; height: 48px; background: var(--teal); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; padding-left: 3px; }
 .video-box strong { font-size: 0.9rem; color: var(--ink); }
 .video-box span { font-size: 11px; color: var(--ink-soft); font-family: 'Space Mono', monospace; }
+.founder-clip { flex-direction: row; align-items: center; text-align: left; padding: 0.9rem; gap: 1.1rem; min-height: 0; }
+.founder-clip video { width: 46%; max-width: 210px; aspect-ratio: 9 / 16; height: auto; object-fit: cover; border-radius: 9px; border: 2px solid var(--ink); background: #000; display: block; flex: none; }
+.fc-text { display: flex; flex-direction: column; gap: 0.5rem; }
+.fc-text strong { font-size: 1.05rem; }
+.fc-text p { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+@media (max-width: 420px) { .founder-clip { flex-direction: column; text-align: center; } .founder-clip video { width: 70%; max-width: 240px; } }
 .notebook { background: var(--paper); border: 2px solid var(--ink); border-radius: 12px; overflow: hidden; }
 .nb-head { background: var(--teal); color: #fff; padding: 0.65rem 1.1rem; font-family: 'Space Mono', monospace; font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em; }
 .nb-body { padding: 1rem 1.1rem; }
@@ -444,12 +450,16 @@ footer a { color: var(--teal); }
     </div>
 
     <div class="hero-right">
-      <div class="video-box">
-        <div class="video-play">▶</div>
-        <strong>Why I started JellyWatch</strong>
-        <span>~30 sec · replace with video or YouTube embed</span>
-        <!-- <iframe width="100%" height="200" src="https://www.youtube.com/embed/YOUR_ID"
-          frameborder="0" allowfullscreen style="border-radius:8px;display:block;"></iframe> -->
+      <div class="video-box founder-clip">
+        <video controls playsinline preload="metadata" poster="assets/founder-video-poster.jpg" width="720" height="1280">
+          <source src="assets/founder-video.mp4" type="video/mp4">
+          <track kind="captions" src="assets/founder-video.en.vtt" srclang="en" label="English" default>
+        </video>
+        <div class="fc-text">
+          <strong>Why I started JellyWatch</strong>
+          <span>57 sec · recorded April 2026 · captions on</span>
+          <p>Three countries share one jellyfish problem and no shared data. In under a minute, here's why I built this and how you can help.</p>
+        </div>
       </div>
       <div class="notebook">
         <div class="nb-head">📓 What I've found so far</div>
